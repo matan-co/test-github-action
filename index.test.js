@@ -1,5 +1,11 @@
-const sum = require('./index.js');
+const supertest = require('supertest');
+const app = require('./index');
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+
+describe('GET /', () => {
+  it('should return 200', (done) => {
+    supertest(app)
+      .get('/')
+      .expect(200, done);
+  });
 });
